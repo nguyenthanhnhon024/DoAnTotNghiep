@@ -1,0 +1,998 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{667E525D-D7C7-4D10-B8E7-32E06CD6B0D9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DRL_UTE</RootNamespace>
+    <AssemblyName>DRL_UTE</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44364</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.8.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.8.4\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.2.10, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.3.2\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.AWT.WinForms, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.AWT.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Beans, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Beans.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Charsets, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Cldrdata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Cldrdata.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Corba, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Corba.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Localedata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Localedata.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Management, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Media, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Naming, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Naming.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Nashorn, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Nashorn.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Remoting, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Remoting.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Tools, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Crypto, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Transform, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Transform.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.WebServices, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.XPath, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.JNI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.5\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.5\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.5\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.5\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Formatters.4.3.0\lib\net46\System.Runtime.Serialization.Formatters.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.3.0\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\CanBoLop\CanBoLopAreaRegistration.cs" />
+    <Compile Include="Areas\CanBoLop\Controllers\CapNhatTTController.cs" />
+    <Compile Include="Areas\CanBoLop\Controllers\ChamDRL2Controller.cs" />
+    <Compile Include="Areas\CanBoLop\Controllers\DRL2Controller.cs" />
+    <Compile Include="Areas\CanBoLop\Controllers\HomeController.cs" />
+    <Compile Include="Areas\CanBoLop\Controllers\ThongKeController.cs" />
+    <Compile Include="Areas\CanBoLop\Controllers\XemDRLController.cs" />
+    <Compile Include="Areas\CanBoLop\Controllers\XemDRLLopController.cs" />
+    <Compile Include="Areas\CanBoLop\Controllers\XNDiemLopController.cs" />
+    <Compile Include="Areas\GVCN\Controllers\CapNhatTTController.cs" />
+    <Compile Include="Areas\GVCN\Controllers\HomeController.cs" />
+    <Compile Include="Areas\GVCN\Controllers\PhanCBLController.cs" />
+    <Compile Include="Areas\GVCN\Controllers\ThongKeController.cs" />
+    <Compile Include="Areas\GVCN\Controllers\XemDRLLopController.cs" />
+    <Compile Include="Areas\GVCN\Controllers\XNDiemLop2Controller.cs" />
+    <Compile Include="Areas\GVCN\GVCNAreaRegistration.cs" />
+    <Compile Include="Areas\PhongCTSV\Controllers\CapNhatTTController.cs" />
+    <Compile Include="Areas\PhongCTSV\Controllers\CNDotChamController.cs" />
+    <Compile Include="Areas\PhongCTSV\Controllers\CNLopController.cs" />
+    <Compile Include="Areas\PhongCTSV\Controllers\CNSinhVienController.cs" />
+    <Compile Include="Areas\PhongCTSV\Controllers\CNTaiKhoanController.cs" />
+    <Compile Include="Areas\PhongCTSV\Controllers\HomeController.cs" />
+    <Compile Include="Areas\PhongCTSV\Controllers\XemDRLController.cs" />
+    <Compile Include="Areas\PhongCTSV\PhongCTSVAreaRegistration.cs" />
+    <Compile Include="Areas\PhongDaoTao\Controllers\CapNhatTTController.cs" />
+    <Compile Include="Areas\PhongDaoTao\Controllers\CNDiemController.cs" />
+    <Compile Include="Areas\PhongDaoTao\Controllers\HomeController.cs" />
+    <Compile Include="Areas\PhongDaoTao\PhongDaoTaoAreaRegistration.cs" />
+    <Compile Include="Areas\PhongDoan\Controllers\CapNhatTTController.cs" />
+    <Compile Include="Areas\PhongDoan\Controllers\CNHoatDongController.cs" />
+    <Compile Include="Areas\PhongDoan\Controllers\HomeController.cs" />
+    <Compile Include="Areas\PhongDoan\PhongDoanAreaRegistration.cs" />
+    <Compile Include="Areas\PhongKHTC\Controllers\CapNhatTTController.cs" />
+    <Compile Include="Areas\PhongKHTC\Controllers\CNHocPhiController.cs" />
+    <Compile Include="Areas\PhongKHTC\Controllers\HomeController.cs" />
+    <Compile Include="Areas\PhongKHTC\PhongKHTCAreaRegistration.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\CapNhatTTController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\ChamDRLController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\DRLController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\HomeController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\XemDRLController.cs" />
+    <Compile Include="Areas\SinhVien\Model\UserUpdateMK.cs" />
+    <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\CTDotCham.cs" />
+    <Compile Include="Common\DiemEdit.cs" />
+    <Compile Include="Common\DotChamHT.cs" />
+    <Compile Include="Common\SinhVienXN.cs" />
+    <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\material-dashboard.css" />
+    <Content Include="assets\css\material-dashboard.min.css" />
+    <Content Include="assets\css\nucleo-icons.css" />
+    <Content Include="assets\css\nucleo-svg.css" />
+    <Content Include="assets\CTSV\css\style.css" />
+    <Content Include="assets\CTSV\fonts\material-icon\css\material-design-iconic-font.css" />
+    <Content Include="assets\CTSV\fonts\material-icon\css\material-design-iconic-font.min.css" />
+    <Content Include="assets\CTSV\fonts\material-icon\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300italic.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500italic.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-600.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700italic.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800italic.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-900.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-italic.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-regular.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700italic.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-italic.svg" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-regular.svg" />
+    <Content Include="assets\CTSV\images\dots.png" />
+    <Content Include="assets\CTSV\images\form-img.jpg" />
+    <Content Include="assets\CTSV\images\header-text.png" />
+    <Content Include="assets\CTSV\js\main.js" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\jquery-ui.css" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\jquery-ui.js" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\jquery-ui.min.css" />
+    <Content Include="assets\CTSV\vendor\jquery-ui\jquery-ui.min.js" />
+    <Content Include="assets\CTSV\vendor\jquery\jquery-ui.min.js" />
+    <Content Include="assets\CTSV\vendor\jquery\jquery.min.js" />
+    <Content Include="assets\fonts\nucleo-icons.svg" />
+    <Content Include="assets\imgMC\logoute.png" />
+    <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\bg-pricing.jpg" />
+    <Content Include="assets\img\bg-smart-home-1.jpg" />
+    <Content Include="assets\img\bg-smart-home-2.jpg" />
+    <Content Include="assets\img\bruce-mars.jpg" />
+    <Content Include="assets\img\down-arrow-dark.svg" />
+    <Content Include="assets\img\down-arrow-white.svg" />
+    <Content Include="assets\img\down-arrow.svg" />
+    <Content Include="assets\img\drake.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\home-decor-1.jpg" />
+    <Content Include="assets\img\home-decor-2.jpg" />
+    <Content Include="assets\img\home-decor-3.jpg" />
+    <Content Include="assets\img\icons\flags\AU.png" />
+    <Content Include="assets\img\icons\flags\BR.png" />
+    <Content Include="assets\img\icons\flags\DE.png" />
+    <Content Include="assets\img\icons\flags\GB.png" />
+    <Content Include="assets\img\icons\flags\US.png" />
+    <Content Include="assets\img\illustrations\chat.png" />
+    <Content Include="assets\img\illustrations\danger-chat-ill.png" />
+    <Content Include="assets\img\illustrations\dark-lock-ill.png" />
+    <Content Include="assets\img\illustrations\error-404.png" />
+    <Content Include="assets\img\illustrations\error-500.png" />
+    <Content Include="assets\img\illustrations\illustration-lock.jpg" />
+    <Content Include="assets\img\illustrations\illustration-reset.jpg" />
+    <Content Include="assets\img\illustrations\illustration-signin.jpg" />
+    <Content Include="assets\img\illustrations\illustration-signup.jpg" />
+    <Content Include="assets\img\illustrations\illustration-verification.jpg" />
+    <Content Include="assets\img\illustrations\lock.png" />
+    <Content Include="assets\img\illustrations\pattern-tree.svg" />
+    <Content Include="assets\img\illustrations\rocket-white.png" />
+    <Content Include="assets\img\ivana-square.jpg" />
+    <Content Include="assets\img\ivana-squares.jpg" />
+    <Content Include="assets\img\ivancik.jpg" />
+    <Content Include="assets\img\kal-visuals-square.jpg" />
+    <Content Include="assets\img\logo-ct-dark.png" />
+    <Content Include="assets\img\logo-ct.png" />
+    <Content Include="assets\img\logos\gray-logos\logo-coinbase.svg" />
+    <Content Include="assets\img\logos\gray-logos\logo-nasa.svg" />
+    <Content Include="assets\img\logos\gray-logos\logo-netflix.svg" />
+    <Content Include="assets\img\logos\gray-logos\logo-pinterest.svg" />
+    <Content Include="assets\img\logos\gray-logos\logo-spotify.svg" />
+    <Content Include="assets\img\logos\gray-logos\logo-vodafone.svg" />
+    <Content Include="assets\img\logos\mastercard.png" />
+    <Content Include="assets\img\logos\visa.png" />
+    <Content Include="assets\img\logoute.png" />
+    <Content Include="assets\img\marie.jpg" />
+    <Content Include="assets\img\meeting.jpg" />
+    <Content Include="assets\img\office-dark.jpg" />
+    <Content Include="assets\img\product-12.jpg" />
+    <Content Include="assets\img\products\product-1-min.jpg" />
+    <Content Include="assets\img\products\product-11.jpg" />
+    <Content Include="assets\img\products\product-2-min.jpg" />
+    <Content Include="assets\img\products\product-3-min.jpg" />
+    <Content Include="assets\img\products\product-4-min.jpg" />
+    <Content Include="assets\img\products\product-5-min.jpg" />
+    <Content Include="assets\img\products\product-6-min.jpg" />
+    <Content Include="assets\img\products\product-7-min.jpg" />
+    <Content Include="assets\img\products\product-details-1.jpg" />
+    <Content Include="assets\img\products\product-details-2.jpg" />
+    <Content Include="assets\img\products\product-details-3.jpg" />
+    <Content Include="assets\img\products\product-details-4.jpg" />
+    <Content Include="assets\img\products\product-details-5.jpg" />
+    <Content Include="assets\img\shapes\pattern-lines.svg" />
+    <Content Include="assets\img\shapes\waves-white.svg" />
+    <Content Include="assets\img\small-logos\bootstrap.svg" />
+    <Content Include="assets\img\small-logos\creative-tim.svg" />
+    <Content Include="assets\img\small-logos\devto.svg" />
+    <Content Include="assets\img\small-logos\github.svg" />
+    <Content Include="assets\img\small-logos\google-webdev.svg" />
+    <Content Include="assets\img\small-logos\icon-bulb.svg" />
+    <Content Include="assets\img\small-logos\icon-sun-cloud.png" />
+    <Content Include="assets\img\small-logos\logo-asana.svg" />
+    <Content Include="assets\img\small-logos\logo-atlassian.svg" />
+    <Content Include="assets\img\small-logos\logo-invision.svg" />
+    <Content Include="assets\img\small-logos\logo-jira.svg" />
+    <Content Include="assets\img\small-logos\logo-slack.svg" />
+    <Content Include="assets\img\small-logos\logo-spotify.svg" />
+    <Content Include="assets\img\small-logos\logo-xd.svg" />
+    <Content Include="assets\img\team-1.jpg" />
+    <Content Include="assets\img\team-2.jpg" />
+    <Content Include="assets\img\team-3.jpg" />
+    <Content Include="assets\img\team-4.jpg" />
+    <Content Include="assets\img\team-5.jpg" />
+    <Content Include="assets\img\tesla-model-s.png" />
+    <Content Include="assets\img\vr-bg.jpg" />
+    <Content Include="assets\js\core\bootstrap.bundle.min.js" />
+    <Content Include="assets\js\core\bootstrap.min.js" />
+    <Content Include="assets\js\core\popper.min.js" />
+    <Content Include="assets\js\material-dashboard.js" />
+    <Content Include="assets\js\material-dashboard.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-notify.js" />
+    <Content Include="assets\js\plugins\Chart.extension.js" />
+    <Content Include="assets\js\plugins\chartjs.min.js" />
+    <Content Include="assets\js\plugins\perfect-scrollbar.min.js" />
+    <Content Include="assets\js\plugins\smooth-scrollbar.min.js" />
+    <Content Include="assets\js\plugins\world.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="assets\css\material-dashboard.css.map" />
+    <Content Include="assets\fonts\nucleo-icons.eot" />
+    <Content Include="assets\fonts\nucleo-icons.ttf" />
+    <Content Include="assets\fonts\nucleo-icons.woff" />
+    <Content Include="assets\fonts\nucleo-icons.woff2" />
+    <Content Include="assets\fonts\nucleo.eot" />
+    <Content Include="assets\fonts\nucleo.ttf" />
+    <Content Include="assets\fonts\nucleo.woff" />
+    <Content Include="assets\fonts\nucleo.woff2" />
+    <Content Include="assets\js\material-dashboard.js.map" />
+    <Content Include="assets\scss\material-dashboard.scss" />
+    <Content Include="assets\scss\material-dashboard\badges\_badge-circle.scss" />
+    <Content Include="assets\scss\material-dashboard\badges\_badge-dot.scss" />
+    <Content Include="assets\scss\material-dashboard\badges\_badge-floating.scss" />
+    <Content Include="assets\scss\material-dashboard\badges\_badge.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\bootstrap-grid.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\bootstrap-utilities.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\bootstrap.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\forms\_floating-labels.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\forms\_form-check.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\forms\_form-control.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\forms\_form-range.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\forms\_form-select.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\forms\_form-text.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\forms\_input-group.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\forms\_labels.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\forms\_validation.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\helpers\_clearfix.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\helpers\_colored-links.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\helpers\_position.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\helpers\_ratio.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\helpers\_stacks.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\helpers\_stretched-link.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\helpers\_text-truncation.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\helpers\_visually-hidden.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\helpers\_vr.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_alert.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_backdrop.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_caret.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_color-scheme.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_container.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_forms.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_gradients.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_grid.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_image.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_list-group.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_lists.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_pagination.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_resize.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_table-variants.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_transition.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_utilities.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\mixins\_visually-hidden.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\utilities\_api.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\vendor\_rfs.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_accordion.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_alert.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_badge.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_breadcrumb.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_button-group.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_card.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_carousel.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_close.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_containers.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_dropdown.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_forms.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_functions.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_grid.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_helpers.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_images.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_list-group.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_mixins.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_modal.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_nav.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_navbar.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_offcanvas.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_pagination.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_placeholders.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_popover.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_progress.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_reboot.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_root.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_spinners.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_tables.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_toasts.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_tooltip.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_transitions.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_type.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_utilities.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\_variables.scss" />
+    <Content Include="assets\scss\material-dashboard\cards\card-background.scss" />
+    <Content Include="assets\scss\material-dashboard\cards\card-blog.scss" />
+    <Content Include="assets\scss\material-dashboard\cards\card-horizontal.scss" />
+    <Content Include="assets\scss\material-dashboard\cards\card-pricing.scss" />
+    <Content Include="assets\scss\material-dashboard\cards\card-profile.scss" />
+    <Content Include="assets\scss\material-dashboard\cards\card-rotate.scss" />
+    <Content Include="assets\scss\material-dashboard\custom\_styles.scss" />
+    <Content Include="assets\scss\material-dashboard\custom\_variables.scss" />
+    <Content Include="assets\scss\material-dashboard\forms\_form-check.scss" />
+    <Content Include="assets\scss\material-dashboard\forms\_form-select.scss" />
+    <Content Include="assets\scss\material-dashboard\forms\_form-switch.scss" />
+    <Content Include="assets\scss\material-dashboard\forms\_forms.scss" />
+    <Content Include="assets\scss\material-dashboard\forms\_input-group.scss" />
+    <Content Include="assets\scss\material-dashboard\forms\_inputs.scss" />
+    <Content Include="assets\scss\material-dashboard\forms\_labels.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\mixins.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_badge.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_colored-shadows.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_hover.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_social-buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_vendor.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\free\plugins.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\free\_flatpickr.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\free\_nouislider.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\free\_perfect-scrollbar.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\free\_prism.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\multi-step.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\plugins-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_carousel-slick.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_choices.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_datatable-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_datatable.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_dragula.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_dropzone.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_fullcalendar-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_fullcalendar.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_glidejs.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_highlight.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_kanban.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_leaflet.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_list-check.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_photoswipe.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_quill.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_rating-widget.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_sweetalert2-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_sweetalert2.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\pro\_vector-map.scss" />
+    <Content Include="assets\scss\material-dashboard\theme-pro.scss" />
+    <Content Include="assets\scss\material-dashboard\theme.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_animations.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_avatars.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_badge.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_breadcrumb.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_cards-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_cards.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_choices.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_dark-version.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_dropdowns.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_fixed-plugin.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_form-switch.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_full-calendar.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_header.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_info-areas.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_misc-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_misc.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_navbar-vertical.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_navbar.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_pagination.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_ripple.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_rtl.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_social-buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_table.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_timeline.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_utilities-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_utilities.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_virtual-reality.scss" />
+    <Content Include="assets\scss\material-dashboard\_accordion.scss" />
+    <Content Include="assets\scss\material-dashboard\_alert.scss" />
+    <Content Include="assets\scss\material-dashboard\_avatars.scss" />
+    <Content Include="assets\scss\material-dashboard\_backgrounds.scss" />
+    <Content Include="assets\scss\material-dashboard\_badge.scss" />
+    <Content Include="assets\scss\material-dashboard\_breadcrumbs.scss" />
+    <Content Include="assets\scss\material-dashboard\_buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\_cards-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\_cards.scss" />
+    <Content Include="assets\scss\material-dashboard\_components.scss" />
+    <Content Include="assets\scss\material-dashboard\_dark-version.scss" />
+    <Content Include="assets\scss\material-dashboard\_dropdown-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\_dropdown.scss" />
+    <Content Include="assets\scss\material-dashboard\_dropup.scss" />
+    <Content Include="assets\scss\material-dashboard\_fixed-plugin.scss" />
+    <Content Include="assets\scss\material-dashboard\_floating-elements.scss" />
+    <Content Include="assets\scss\material-dashboard\_footer.scss" />
+    <Content Include="assets\scss\material-dashboard\_forms.scss" />
+    <Content Include="assets\scss\material-dashboard\_gradients.scss" />
+    <Content Include="assets\scss\material-dashboard\_header.scss" />
+    <Content Include="assets\scss\material-dashboard\_icons.scss" />
+    <Content Include="assets\scss\material-dashboard\_info-areas.scss" />
+    <Content Include="assets\scss\material-dashboard\_list-check.scss" />
+    <Content Include="assets\scss\material-dashboard\_misc-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\_misc.scss" />
+    <Content Include="assets\scss\material-dashboard\_nav.scss" />
+    <Content Include="assets\scss\material-dashboard\_navbar-vertical.scss" />
+    <Content Include="assets\scss\material-dashboard\_navbar.scss" />
+    <Content Include="assets\scss\material-dashboard\_pagination.scss" />
+    <Content Include="assets\scss\material-dashboard\_popovers.scss" />
+    <Content Include="assets\scss\material-dashboard\_progress.scss" />
+    <Content Include="assets\scss\material-dashboard\_ripple.scss" />
+    <Content Include="assets\scss\material-dashboard\_rtl-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\_rtl.scss" />
+    <Content Include="assets\scss\material-dashboard\_social-buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\_tables.scss" />
+    <Content Include="assets\scss\material-dashboard\_tilt.scss" />
+    <Content Include="assets\scss\material-dashboard\_timeline.scss" />
+    <Content Include="assets\scss\material-dashboard\_tooltips.scss" />
+    <Content Include="assets\scss\material-dashboard\_typography.scss" />
+    <Content Include="assets\scss\material-dashboard\_utilities-extend.scss" />
+    <Content Include="assets\scss\material-dashboard\_utilities.scss" />
+    <Content Include="assets\scss\material-dashboard\_variables.scss" />
+    <Content Include="Areas\SinhVien\Views\web.config" />
+    <Content Include="Areas\SinhVien\Views\Home\Index.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\web.config" />
+    <Content Include="Areas\GVCN\Views\web.config" />
+    <Content Include="Areas\PhongCTSV\Views\web.config" />
+    <Content Include="Areas\PhongDaoTao\Views\web.config" />
+    <Content Include="Areas\CanBoLop\Views\Home\Index.cshtml" />
+    <Content Include="Areas\GVCN\Views\Home\Index.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\Home\Index.cshtml" />
+    <Content Include="Areas\PhongDaoTao\Views\Home\Index.cshtml" />
+    <Content Include="Areas\PhongDoan\Views\web.config" />
+    <Content Include="Areas\PhongDoan\Views\Home\Index.cshtml" />
+    <Content Include="Areas\PhongKHTC\Views\web.config" />
+    <Content Include="Areas\PhongKHTC\Views\Home\Index.cshtml" />
+    <Content Include="Areas\SinhVien\Views\DRL\Index.cshtml" />
+    <Content Include="Areas\SinhVien\Views\DRL\Edit.cshtml" />
+    <Content Include="Areas\SinhVien\Views\ChamDRL\Index.cshtml" />
+    <Content Include="Areas\SinhVien\Views\ChamDRL\Xacnhan.cshtml" />
+    <Content Include="Areas\SinhVien\Views\CapNhatTT\Index.cshtml" />
+    <Content Include="Areas\SinhVien\Views\CapNhatTT\UpdateMK.cshtml" />
+    <Content Include="Areas\SinhVien\Views\XemDRL\Index.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\CapNhatTT\Index.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\CapNhatTT\UpdateMK.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\DRL2\Index.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\DRL2\Edit.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\ChamDRL2\Index.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\ChamDRL2\Xacnhan.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\DRL2\Details.cshtml" />
+    <Content Include="Areas\SinhVien\Views\DRL\Details.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\XemDRL\Index.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\XNDiemLop\Index.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\XNDiemLop\Details.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\XNDiemLop\Chitiet.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\XNDiemLop\Xacnhan.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\XemDRLLop\Index.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\XemDRLLop\Details.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\XemDRLLop\Chitiet.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\ThongKe\Index.cshtml" />
+    <Content Include="Areas\CanBoLop\Views\ThongKe\Details.cshtml" />
+    <Content Include="Areas\GVCN\Views\CapNhatTT\Index.cshtml" />
+    <Content Include="Areas\GVCN\Views\CapNhatTT\UpdateMK.cshtml" />
+    <Content Include="Areas\GVCN\Views\XNDiemLop2\Index.cshtml" />
+    <Content Include="Areas\GVCN\Views\XNDiemLop2\Details.cshtml" />
+    <Content Include="Areas\GVCN\Views\XNDiemLop2\Chitiet.cshtml" />
+    <Content Include="Areas\GVCN\Views\XNDiemLop2\Xacnhan.cshtml" />
+    <Content Include="Areas\GVCN\Views\ThongKe\Index.cshtml" />
+    <Content Include="Areas\GVCN\Views\ThongKe\Details.cshtml" />
+    <Content Include="Areas\GVCN\Views\XemDRLLop\Index.cshtml" />
+    <Content Include="Areas\GVCN\Views\XemDRLLop\Details.cshtml" />
+    <Content Include="Areas\GVCN\Views\XemDRLLop\Chitiet.cshtml" />
+    <Content Include="Areas\GVCN\Views\PhanCBL\Index.cshtml" />
+    <Content Include="Areas\GVCN\Views\PhanCBL\Chitiet.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CapNhatTT\Index.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CapNhatTT\UpdateMK.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNDotCham\Index.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNDotCham\Create.cshtml" />
+    <Content Include="assets\CTSV\.sass-cache\0717b98c6a6bd391fb4f8df76acf1fcea07f5d98\style.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\21880c0ffe15753a53f8402e9f64e1077e071510\style.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\2866be86c578bb583fbf023501bb9fd24cc3bf22\extend.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\2866be86c578bb583fbf023501bb9fd24cc3bf22\fonts.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\2866be86c578bb583fbf023501bb9fd24cc3bf22\global.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\2866be86c578bb583fbf023501bb9fd24cc3bf22\minxi.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\2866be86c578bb583fbf023501bb9fd24cc3bf22\variables.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\3948936f84e1a30385e73a9be140b58b48c82e15\style.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\3986946cb5aafb18735edd25cff5deb7a0eca1e0\style.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\main.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\responsive.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\extend.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\fonts.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\global.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\minxi.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\variables.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\889a8b456b3d05da5eee40356a8cd7cd49d5d4ad\main.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\889a8b456b3d05da5eee40356a8cd7cd49d5d4ad\responsive.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\9dc767a56f3dc2f8a933300255cd2265f13191d4\main.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\9dc767a56f3dc2f8a933300255cd2265f13191d4\responsive.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\c36f88b26093e3516ab62f7245605adc5c11410b\main.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\c36f88b26093e3516ab62f7245605adc5c11410b\responsive.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\d027f3eef7fbfc8738420f3b59e46a3afa9ef8c4\extend.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\d027f3eef7fbfc8738420f3b59e46a3afa9ef8c4\fonts.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\d027f3eef7fbfc8738420f3b59e46a3afa9ef8c4\global.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\d027f3eef7fbfc8738420f3b59e46a3afa9ef8c4\minxi.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\d027f3eef7fbfc8738420f3b59e46a3afa9ef8c4\variables.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\f71149907399ab955d3d70a25ac6bfed8a6004f4\extend.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\f71149907399ab955d3d70a25ac6bfed8a6004f4\fonts.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\f71149907399ab955d3d70a25ac6bfed8a6004f4\global.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\f71149907399ab955d3d70a25ac6bfed8a6004f4\minxi.scssc" />
+    <Content Include="assets\CTSV\.sass-cache\f71149907399ab955d3d70a25ac6bfed8a6004f4\variables.scssc" />
+    <Content Include="assets\CTSV\css\style.css.map" />
+    <Content Include="assets\CTSV\fonts\material-icon\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="assets\CTSV\fonts\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="assets\CTSV\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="assets\CTSV\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300italic.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300italic.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300italic.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-300italic.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500italic.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500italic.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500italic.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-500italic.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-600.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-600.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-600.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-600.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700italic.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700italic.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700italic.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-700italic.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800italic.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800italic.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800italic.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-800italic.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-900.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-900.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-900.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-900.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-italic.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-italic.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-italic.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-italic.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-regular.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-regular.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-regular.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\poppins-v5-latin-regular.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700italic.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700italic.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700italic.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-700italic.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-italic.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-italic.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-italic.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-italic.woff2" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-regular.eot" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-regular.ttf" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-regular.woff" />
+    <Content Include="assets\CTSV\fonts\poppins\roboto-condensed-v16-latin-regular.woff2" />
+    <Content Include="assets\CTSV\scss\common\extend.scss" />
+    <Content Include="assets\CTSV\scss\common\fonts.scss" />
+    <Content Include="assets\CTSV\scss\common\global.scss" />
+    <Content Include="assets\CTSV\scss\common\minxi.scss" />
+    <Content Include="assets\CTSV\scss\common\variables.scss" />
+    <Content Include="assets\CTSV\scss\layouts\main.scss" />
+    <Content Include="assets\CTSV\scss\layouts\responsive.scss" />
+    <Content Include="assets\CTSV\scss\style.scss" />
+    <Content Include="Areas\PhongCTSV\Views\CNDotCham\Edit.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNLop\Index.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNLop\Create.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNLop\Edit.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNLop\Upload.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNTaiKhoan\Index.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNTaiKhoan\Details.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNTaiKhoan\Edit.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNTaiKhoan\Create.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNSinhVien\Index.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNSinhVien\Details.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNSinhVien\Edit.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNSinhVien\Create.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\CNSinhVien\UploadExcel.cshtml" />
+    <Content Include="Areas\PhongDoan\Views\CapNhatTT\Index.cshtml" />
+    <Content Include="Areas\PhongDoan\Views\CapNhatTT\UpdateMK.cshtml" />
+    <Content Include="Areas\PhongDaoTao\Views\CapNhatTT\Index.cshtml" />
+    <Content Include="Areas\PhongDaoTao\Views\CapNhatTT\UpdateMK.cshtml" />
+    <Content Include="Areas\PhongDaoTao\Views\CNDiem\Index.cshtml" />
+    <Content Include="Areas\PhongDaoTao\Views\CNDiem\Details.cshtml" />
+    <Content Include="Areas\PhongDaoTao\Views\CNDiem\UploadExcel.cshtml" />
+    <Content Include="Areas\PhongDaoTao\Views\CNDiem\Edit.cshtml" />
+    <Content Include="Areas\PhongDoan\Views\CNHoatDong\Index.cshtml" />
+    <Content Include="Areas\PhongDoan\Views\CNHoatDong\Edit.cshtml" />
+    <Content Include="Areas\PhongDoan\Views\CNHoatDong\Create.cshtml" />
+    <Content Include="Areas\PhongDoan\Views\CNHoatDong\Details.cshtml" />
+    <Content Include="Areas\PhongDoan\Views\CNHoatDong\UploadExcel.cshtml" />
+    <Content Include="Areas\PhongDoan\Views\CNHoatDong\AddSV.cshtml" />
+    <Content Include="Areas\PhongKHTC\Views\CapNhatTT\Index.cshtml" />
+    <Content Include="Areas\PhongKHTC\Views\CapNhatTT\UpdateMK.cshtml" />
+    <Content Include="Areas\PhongKHTC\Views\CNHocPhi\Index.cshtml" />
+    <Content Include="Areas\PhongKHTC\Views\CNHocPhi\Details.cshtml" />
+    <Content Include="Areas\PhongKHTC\Views\CNHocPhi\AddSV.cshtml" />
+    <Content Include="Areas\PhongKHTC\Views\CNHocPhi\UploadExcel.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\XemDRL\Index.cshtml" />
+    <Content Include="Areas\PhongCTSV\Views\XemDRL\Chitiet.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\controllers\ChamDRLController.js" />
+    <Content Include="Scripts\controllers\ChamDRLController2.js" />
+    <Content Include="Scripts\controllers\XNDiemLop2Controllor.js" />
+    <Content Include="Scripts\controllers\XNDiemLopControllor.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\plugins\mustache.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\CanBoLop\Data\" />
+    <Folder Include="Areas\CanBoLop\Views\Shared\" />
+    <Folder Include="Areas\GVCN\Data\" />
+    <Folder Include="Areas\GVCN\Views\Shared\" />
+    <Folder Include="Areas\PhongCTSV\Data\" />
+    <Folder Include="Areas\PhongCTSV\Views\Shared\" />
+    <Folder Include="Areas\PhongDaoTao\Data\" />
+    <Folder Include="Areas\PhongDaoTao\Views\Shared\" />
+    <Folder Include="Areas\PhongDoan\Data\" />
+    <Folder Include="Areas\PhongDoan\Views\Shared\" />
+    <Folder Include="Areas\PhongKHTC\Data\" />
+    <Folder Include="Areas\PhongKHTC\Views\Shared\" />
+    <Folder Include="Areas\SinhVien\Views\Shared\" />
+    <Folder Include="Views\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelEF\ModelEF.csproj">
+      <Project>{31eed9bc-f636-4ba3-a329-4431c4a4f1bd}</Project>
+      <Name>ModelEF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2949</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44364/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

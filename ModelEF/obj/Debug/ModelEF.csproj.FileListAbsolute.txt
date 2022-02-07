@@ -1,0 +1,16 @@
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\ModelEF.dll.config
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\ModelEF.dll
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\ModelEF.pdb
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\EntityFramework.dll
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\EntityFramework.SqlServer.dll
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\EntityFramework.xml
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\EntityFramework.SqlServer.xml
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\obj\Debug\ModelEF.csproj.CoreCompileInputs.cache
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\obj\Debug\ModelEF.csproj.CopyComplete
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\obj\Debug\ModelEF.dll
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\obj\Debug\ModelEF.pdb
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\obj\Debug\ModelEF.csproj.AssemblyReference.cache
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\PagedList.dll
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\PagedList.Mvc.dll
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\PagedList.xml
+D:\MÔN HỌC\4_Kì 121\Đồ Án Tốt Nghiệp\Code\DRL_UTE\ModelEF\bin\Debug\PagedList.Mvc.xml

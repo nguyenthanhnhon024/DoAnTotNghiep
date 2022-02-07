@@ -1,0 +1,271 @@
+﻿@model ModelEF.Model.TaiKhoanPB
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+    <title>
+        Trang Kế Hoạch Tài Chính
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- Nucleo Icons -->
+    <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/assets/CTSV/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/assets/CTSV/vendor/jquery-ui/jquery-ui.min.css">
+
+
+</head>
+
+<body class="g-sidenav-show  bg-gray-200">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0" href="/PhongKHTC/Home/Index">
+                <img src="~/assets/img/logoute.png" class="navbar-brand-img h-100" alt="main_logo">
+                <span class="ms-1 font-weight-bold text-white">Phòng Kế Hoạch Tài Chính</span>
+            </a>
+        </div>
+        <hr class="horizontal light mt-0 mb-2">
+        <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="@Url.Action("Index", "CNHocPhi" )">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Cập nhật tình trạng học phí</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white active bg-gradient-primary" href="@Url.Action("Index", "CapNhatTT" )">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">view_in_ar</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Cập nhật thông tin cá nhân</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="@Url.Action("UpdateMK", "CapNhatTT" )">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Đổi mật khẩu</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidenav-footer position-absolute w-100 bottom-0 ">
+            <div class="mx-3">
+                <a class="btn bg-gradient-primary mt-4 w-100" href="/Login/Index" onclick="return confirm('Bạn có chắc muốn đăng xuất chứ?');" type="button">Đăng Xuất</a>
+            </div>
+        </div>
+    </aside>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Phòng Kế Hoạch Tài Chính</a></li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Cập nhật thông tin cá nhân</li>
+                    </ol>
+                </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="white-box">
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+        </div>
+        <!-- End Navbar -->
+        <div class="container-fluid px-2 px-md-4">
+            <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <span class="mask  bg-gradient-primary  opacity-6"></span>
+            </div>
+
+            <div class="card card-body mx-3 mx-md-4 mt-n6">
+                <div class="row gx-4 mb-2">
+                    <div class="col-auto">
+                        <div class="avatar avatar-xxl position-relative">
+                            <img src="@Url.Content("~/assets/imgMC/" +Model.avatar)" id="pictureUpload" alt="profile_image" class="w-100 border-radius-lg shadow-sm" />
+                        </div>
+                    </div>
+                    <div class="col-auto my-auto">
+                        <div class="h-100">
+                            <h4 class="mb-1">
+                                @Html.DisplayFor(model => model.hoTen)
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-12 col-md-9">
+                        <input type="button" id="btnUpload" value="Upload Avatar" class="btn btn-success btn-sm" />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="col-12 col-xl-5">
+                            <div class="card card-plain h-100">
+                                <div class="card-body p-3">
+                                    <hr class="horizontal gray-light my-4">
+                                    <ul class="list-group">
+                                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Mã Tài Khoản:</strong> &nbsp; @Html.DisplayFor(model => model.maTK)</li>
+                                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Đơn Vị Công Tác:</strong> &nbsp; Phòng KH Tài Chính</li>
+                                        <li class="list-group-item border-0 ps-0 text-sm">
+                                            <strong class="text-dark">Giới tính:</strong> &nbsp;
+                                            <select disabled="disabled" class="" id="gioiTinh" name="gioiTinh">
+                                                @if (Model.gioiTinh == 0)
+                                                {
+                                                    <option value="1">Nam</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="1">Nữ</option>
+                                                }
+                                            </select>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-7">
+                            <div class="card card-plain h-100">
+                                @using (Html.BeginForm("Index", "CapNhatTT", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="card-body p-3">
+                                        <hr class="horizontal gray-light my-4">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.maTK)
+                                        <ul class="list-group">
+                                            <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                                                <strong class="text-dark" name="ngay">Sinh ngày:</strong> &nbsp;
+                                                @Html.EditorFor(model => model.ngaySinh, new { htmlAttributes = new { @class = "input-group", @id = "date_from" } })
+                                                @Html.ValidationMessageFor(model => model.ngaySinh, "", new { @class = "text-danger" })
+                                            </li>
+                                            <li class="list-group-item border-0 ps-0 text-sm">
+                                                <strong class="text-dark">Địa chỉ:</strong> &nbsp;
+                                                @Html.EditorFor(model => model.diaChi, new { htmlAttributes = new { @class = "input-group" } })
+                                                @Html.ValidationMessageFor(model => model.diaChi, "", new { @class = "text-danger" })
+                                            </li>
+                                            <li class="list-group-item border-0 ps-0 text-sm">
+                                                <strong class="text-dark">Số điện thoại:</strong> &nbsp;
+                                                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "input-group" } })
+                                                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                                            </li>
+                                            <li class="list-group-item border-0 ps-0 text-sm">
+                                                <strong class="text-dark">Email:</strong> &nbsp;
+                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input-group" } })
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                            </li>
+                                            <input type="file" id="Image" accept="image/*" name="Image" style="display:none" class="form-control-file">
+                                        </ul>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Lưu" class="btn btn-danger" />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- JS -->
+    <script src="/assets/CTSV/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/CTSV/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/assets/CTSV/js/main.js"></script>
+    <!--   Core JS Files   -->
+    <script src="/assets/js/core/popper.min.js"></script>
+    <script src="/assets/js/core/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="/assets/js/plugins/chartjs.min.js"></script>
+
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="/assets/js/material-dashboard.min.js?v=3.0.0"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $(function () {
+            //Đăng ký sự kiện click nút btnUpload
+            $('#btnUpload').click(function () {
+                $('#Image').trigger('click');
+            });
+            //Bắt đầu change data
+            $('#Image').change(function () {
+                if (window.FormData !== undefined) {
+                    var fileUpload = $('#Image').get(0);
+                    var files = fileUpload.files;
+                    var formData = new FormData();
+                    formData.append('file', files[0]);
+                    $.ajax(
+                        {
+                            type: 'POST',
+                            url: '/DRL2/ProcessUpload',
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            success: function (urlImage) {
+                                $('#pictureUpload').attr('src', urlImage);
+                                //$('#picture').val(urlImage);
+                                $('#btnSave').show();
+                            },
+                            error: function (err) {
+                                alert('Có lỗi khi upload:' + err.statusText);
+                            }
+                        });
+                }
+            });
+        });
+    </script>
+    <script>
+        $('#AlertBox').removeClass('hide');
+        $('#AlertBox').delay(3000).slideUp(700);
+    </script>
+</body>
+
+</html>
