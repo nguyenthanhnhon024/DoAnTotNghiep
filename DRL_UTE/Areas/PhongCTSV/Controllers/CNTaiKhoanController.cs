@@ -186,6 +186,7 @@ namespace DRL_UTE.Areas.PhongCTSV.Controllers
             var session = (UserLogin)Session[Constants.USER_SESSION];
             ViewBag.chuNhiemLop = new SelectList(dbPro.Lops, "maLop", "maLop");
 
+
             if (session == null)
             {
                 return Redirect("/Login/Index");
@@ -204,6 +205,7 @@ namespace DRL_UTE.Areas.PhongCTSV.Controllers
                         if (aDB.FindmaTK(model.maTK) == 0)
                         {
                             model.ttTaiKhoan = 1;
+                            model.matKhau = "123456";
                             aDB.Edit(model);
                             SetAlert("Thêm mới thành công", "success");
                             return RedirectToAction("Index", "CNTaiKhoan");
@@ -218,6 +220,7 @@ namespace DRL_UTE.Areas.PhongCTSV.Controllers
                         if (aDB.FindmaTK(model.maTK) == 0)
                         {
                             model.ttTaiKhoan = 1;
+                            model.matKhau = "123456";
                             model.chuNhiemLop = null;
                             aDB.Edit(model);
                             SetAlert("Thêm mới thành công", "success");

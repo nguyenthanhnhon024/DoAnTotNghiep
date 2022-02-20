@@ -305,7 +305,7 @@ namespace ModelEF.Dao
             return model.OrderBy(x => x.ttCham).ToList();
         }
 
-        public IEnumerable<SinhVien_SVDCViewModel> ListALLBymaLopPost(string keysearch, int page, int pageSize,int idDC, string maLop)
+        public IEnumerable<SinhVien_SVDCViewModel> ListALLBymaLopPost(string keysearch,int idDC, string maLop)
         {
             var model = from a in context.tblSinhViens
                         join b in context.SV_DC on a.maSV equals b.maSV
@@ -321,7 +321,7 @@ namespace ModelEF.Dao
                         };
             if (!string.IsNullOrEmpty(keysearch.ToString()))
                 model = model.Where(x => x.tenSV.ToString().Contains(keysearch));
-            return model.OrderBy(x => x.maSV).ToPagedList(page, pageSize);
+            return model.OrderBy(x => x.maSV).ToList();
         }
 
         public IEnumerable<DotCham> ListAllDCPost(string keysearch, int page,int pageSize)

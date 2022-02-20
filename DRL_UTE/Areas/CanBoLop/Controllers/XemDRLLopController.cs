@@ -80,7 +80,7 @@ namespace DRL_UTE.Areas.CanBoLop.Controllers
             var maLop = session.maLop;
             var idDC = session2.idDC;
             var sp = new DRLDao();
-            var model = sp.ListALLBymaLopPost(searchString, page, pageSize,idDC,maLop);
+            var model = sp.ListALLBymaLopPost(searchString,idDC,maLop);
             ViewBag.SearchString = searchString;
             return View(model.ToPagedList(page, pageSize));
         }

@@ -36,7 +36,7 @@ namespace DRL_UTE.Areas.PhongCTSV.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string searchString,string key, int key2, int page = 1, int pageSize = 6)
+        public ActionResult Index(string searchString,string key, int key2)
         {
             var session = (UserLogin)Session[Constants.USER_SESSION];
 
@@ -51,9 +51,9 @@ namespace DRL_UTE.Areas.PhongCTSV.Controllers
             SetViewBag();
 
             var sp = new DRLDao();
-            var model = sp.ListALLBymaLopPost(searchString, page, pageSize, idDC, maLop);
+            var model = sp.ListALLBymaLopPost(searchString,idDC, maLop);
             ViewBag.SearchString = searchString;
-            return View(model.ToPagedList(page, pageSize));
+            return View(model);
         }
 
         [HttpGet]

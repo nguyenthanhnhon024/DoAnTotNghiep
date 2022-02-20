@@ -145,12 +145,12 @@
                     <div class="input-group input-group-outline col-md-4">
                         <div class="col-md-2" style="margin-left:20px">
                             <b>Học Kỳ: </b>
-                            @Html.DropDownList("key2", ViewBag.hocKy as SelectList, "Select", new { onchange = "submit();", @class = "form-control", @id = "select2" })
+                            @Html.DropDownList("key2", ViewBag.hocKy as SelectList, "Select", new { onchange = "submit();", @class = "form-control", @id = "select2"})
 
                         </div>
                         <div class="col-md-2" style="margin-right:50px ; margin-left:20px">
                             <b id="select4" style = "display:none">Lớp: </b>
-                            @Html.DropDownList("key", ViewBag.maLop as SelectList, "Select", new { onchange = "submit();", @class = "form-control", @style = "display:none", @id = "select" })
+                            @Html.DropDownList("key", ViewBag.maLop as SelectList, "Select", new { onchange = "submit();", @class = "form-control", @style = "display:none", @id = "select"})
                         </div>
                         <div class="col-md-4" style="margin-top:32px">
                             <input type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Nhập tên sinh viên muốn tìm" class="form-control" id="select3" style = "display:none"/>
@@ -209,9 +209,6 @@
                             </tr>}
                                     </tbody>
                                 </table>
-                                <div class="pagination-container" style="background-color:lightpink; color:white; margin:20px;padding-left:10px">
-                                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Details", new { @idDC = idDC, page, @searchString = @ViewBag.SearchString }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< First", LinkToPreviousPageFormat = "< Previous |", LinkToNextPageFormat = "| Next >", LinkToLastPageFormat = "Lass >>", DelimiterBetweenPageNumbers = "|" })
-                                </div>
                             </div>
                         </div>
                     </div>

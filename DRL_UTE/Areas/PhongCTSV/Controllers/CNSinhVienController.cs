@@ -259,6 +259,7 @@ namespace DRL_UTE.Areas.PhongCTSV.Controllers
         }
 
         [HttpPost]
+
         public ActionResult UploadExcel(HttpPostedFileBase file)
         {
             var session = (UserLogin)Session[Constants.USER_SESSION];
@@ -336,7 +337,7 @@ namespace DRL_UTE.Areas.PhongCTSV.Controllers
                             sqlBulkCopy.ColumnMappings.Add("tenSV", "tenSV");
                             sqlBulkCopy.ColumnMappings.Add("maLop", "maLop");
                             sqlBulkCopy.ColumnMappings.Add("gioiTinh", "gioiTinh");
-                            
+
                             sqlBulkCopy.ColumnMappings.Add("Email", "Email");
                             sqlBulkCopy.ColumnMappings.Add("SDT", "SDT");
 
